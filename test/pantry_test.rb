@@ -29,4 +29,18 @@ class PantryTest < Minitest::Test
     pantry.add_to_cookbook(@r3)
     assert_equal 3, pantry.cookbook.count
   end
+
+  def test_it_can_stock
+    pantry = Pantry.new
+    pantry.add_to_cookbook(@r1)
+    pantry.add_to_cookbook(@r2)
+    pantry.add_to_cookbook(@r3)
+    pantry.restock("Cheese", 10)
+    pantry.restock("Flour", 20)
+    pantry.restock("Brine", 40)
+    pantry.restock("Pickles", 40)
+    pantry.restock("Raw nuts", 20)
+    pantry.restock("Salt", 20)
+    assert_equal 6, pantry.ingredients.count
+  end
 end
