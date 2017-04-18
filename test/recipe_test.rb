@@ -22,4 +22,11 @@ class RecipeTest < Minitest::Test
     r.add_ingredient("Flour", 500)
     assert_equal 500, r.amount_required("Flour")
   end
+
+  def test_it_can_add_multiple_recipes
+    r2 = Recipe.new("Chesey Pizza")
+    r2.add_ingredient("Cheese", 20)
+    r2.add_ingredient("Flour", 20)
+    assert_equal ["Cheese", "Flour"], r2.ingredient_types
+  end
 end
