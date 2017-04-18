@@ -25,6 +25,8 @@ class PantryTest < Minitest::Test
   def test_pantry_can_add_to_cookbook
     pantry = Pantry.new
     pantry.add_to_cookbook(@r1)
-    assert_equal 1, pantry.cookbook.count
+    pantry.add_to_cookbook(@r2)
+    pantry.add_to_cookbook(@r3)
+    assert_equal 3, pantry.cookbook.count
   end
 end
