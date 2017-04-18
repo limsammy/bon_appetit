@@ -66,4 +66,18 @@ class PantryTest < Minitest::Test
     expected1 = {"Cheese" => 20, "Flour" => 20, "Brine" => 10, "Cucumbers" => 30}
     assert_equal expected1, pantry.print_shopping_list
   end
+
+  def test_what_can_i_make
+    pantry = Pantry.new
+    pantry.add_to_cookbook(@r1)
+    pantry.add_to_cookbook(@r2)
+    pantry.add_to_cookbook(@r3)
+    pantry.restock("Cheese", 10)
+    pantry.restock("Flour", 20)
+    pantry.restock("Brine", 40)
+    pantry.restock("Cucumbers", 40)
+    pantry.restock("Raw nuts", 20)
+    pantry.restock("Salt", 20)
+    assert_equal ["Pickles", "Peanuts"], pantry.what_can_i_make
+  end
 end

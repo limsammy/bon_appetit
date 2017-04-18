@@ -1,3 +1,4 @@
+require 'pry'
 class Pantry
   attr_reader :shopping_list, :stock, :cookbook
 
@@ -39,11 +40,16 @@ class Pantry
     @cookbook << recipe
   end
 
-  # def what_can_i_make
-  #   @cookbook.map do |recipe|
-  #     if @stock.key.include?(recipe.ingredient_types)
-
-  #     end
-  #   end
-  # end
+  def what_can_i_make
+    final = []
+    @cookbook.each do |recipe|
+      recipe.ingredients.each do |ingredient, amount|
+        if @stock[ingredient] == amount
+          final << recipe.name
+          binding.pry
+        end
+      end
+    end
+    final
+  end
 end
