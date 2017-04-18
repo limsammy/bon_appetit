@@ -44,11 +44,8 @@ class PantryTest < Minitest::Test
     pantry.add_to_cookbook(@r2)
     pantry.add_to_cookbook(@r3)
     pantry.restock("Cheese", 10)
-    pantry.restock("Flour", 20)
-    pantry.restock("Brine", 40)
-    pantry.restock("Pickles", 40)
-    pantry.restock("Raw nuts", 20)
-    pantry.restock("Salt", 20)
     assert_equal 10, pantry.stock_check("Cheese")
+    pantry.restock("Cheese", 20)
+    assert_equal 30, pantry.stock_check("Cheese")
   end
 end

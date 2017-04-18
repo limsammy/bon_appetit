@@ -19,7 +19,11 @@ class Pantry
   end
 
   def restock(ingredient, amount)
-    @stock[ingredient] = amount
+    if @stock.key?(ingredient)
+      @stock[ingredient] += amount
+    else
+      @stock[ingredient] = amount
+    end
   end
 
   def what_can_i_make
