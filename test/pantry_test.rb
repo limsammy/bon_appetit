@@ -22,30 +22,40 @@ class PantryTest < Minitest::Test
     assert_instance_of Pantry, pantry
   end
 
-  def test_pantry_can_add_to_cookbook
-    pantry = Pantry.new
-    pantry.add_to_cookbook(@r1)
-    pantry.add_to_cookbook(@r2)
-    pantry.add_to_cookbook(@r3)
-    assert_equal 3, pantry.cookbook.count
-  end
+  # def test_pantry_can_add_to_cookbook
+  #   pantry = Pantry.new
+  #   pantry.add_to_cookbook(@r1)
+  #   pantry.add_to_cookbook(@r2)
+  #   pantry.add_to_cookbook(@r3)
+  #   assert_equal 3, pantry.cookbook.count
+  # end
 
-  def test_stock_is_0_when_nothing_stocked
-    pantry = Pantry.new
-    pantry.add_to_cookbook(@r1)
-    pantry.add_to_cookbook(@r2)
-    pantry.add_to_cookbook(@r3)
-    assert_equal 0, pantry.stock_check("Cheese")
-  end
+  # def test_stock_is_0_when_nothing_stocked
+  #   pantry = Pantry.new
+  #   pantry.add_to_cookbook(@r1)
+  #   pantry.add_to_cookbook(@r2)
+  #   pantry.add_to_cookbook(@r3)
+  #   assert_equal 0, pantry.stock_check("Cheese")
+  # end
 
-  def test_it_can_stock
+  # def test_it_can_stock
+  #   pantry = Pantry.new
+  #   pantry.add_to_cookbook(@r1)
+  #   pantry.add_to_cookbook(@r2)
+  #   pantry.add_to_cookbook(@r3)
+  #   pantry.restock("Cheese", 10)
+  #   assert_equal 10, pantry.stock_check("Cheese")
+  #   pantry.restock("Cheese", 20)
+  #   assert_equal 30, pantry.stock_check("Cheese")
+  # end
+
+  def test_can_add_recipe_to_shopping_list
     pantry = Pantry.new
-    pantry.add_to_cookbook(@r1)
-    pantry.add_to_cookbook(@r2)
-    pantry.add_to_cookbook(@r3)
-    pantry.restock("Cheese", 10)
-    assert_equal 10, pantry.stock_check("Cheese")
-    pantry.restock("Cheese", 20)
-    assert_equal 30, pantry.stock_check("Cheese")
+    pantry.add_to_shopping_list(@r1)
+    expected = {"Cheese" => 20, "Flour" => 20}
+    assert_equal expected, pantry.shopping_list
+    pantry.add_to_shopping_list(@r2)
+    expected1 = {"Cheese" => 20, "Flour" => 20, "Brine" => 10, "Cucumbers" => 30}
+    assert_equal expected1, pantry.shopping_list
   end
 end

@@ -1,13 +1,9 @@
 class Pantry
-  attr_reader :cookbook, :stock
+  attr_reader :shopping_list, :stock
 
   def initialize
-    @cookbook = []
+    @shopping_list = {}
     @stock = {}
-  end
-
-  def add_to_cookbook(recipe)
-    cookbook << recipe
   end
 
   def stock_check(ingredient)
@@ -26,11 +22,17 @@ class Pantry
     end
   end
 
-  def what_can_i_make
-    @cookbook.map do |recipe|
-      if @stock.key.include?(recipe.ingredient_types)
-
-      end
+  def add_to_shopping_list(recipe)
+    recipe.ingredient_types.each do |ingredient_type|
+      @shopping_list[ingredient_type] = recipe.ingredients[ingredient_type]
     end
   end
+
+  # def what_can_i_make
+  #   @cookbook.map do |recipe|
+  #     if @stock.key.include?(recipe.ingredient_types)
+
+  #     end
+  #   end
+  # end
 end
