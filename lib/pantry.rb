@@ -44,7 +44,7 @@ class Pantry
     final = []
     @cookbook.each do |recipe|
       recipe.ingredients.each do |ingredient, amount|
-        if @stock[ingredient] == amount
+        if @stock[ingredient] == amount # new method that checks for all ingredients of recipe??
           final << recipe.name
           binding.pry
         end
