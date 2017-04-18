@@ -28,6 +28,12 @@ class Pantry
     end
   end
 
+  def print_shopping_list
+    @shopping_list.each do |ingredient, amount|
+      puts "*#{ingredient}: #{amount}"
+    end
+  end
+
   # def what_can_i_make
   #   @cookbook.map do |recipe|
   #     if @stock.key.include?(recipe.ingredient_types)

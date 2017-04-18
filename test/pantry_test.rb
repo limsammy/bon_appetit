@@ -58,4 +58,12 @@ class PantryTest < Minitest::Test
     expected1 = {"Cheese" => 20, "Flour" => 20, "Brine" => 10, "Cucumbers" => 30}
     assert_equal expected1, pantry.shopping_list
   end
+
+  def test_prints_shopping_list
+    pantry = Pantry.new
+    pantry.add_to_shopping_list(@r1)
+    pantry.add_to_shopping_list(@r2)
+    expected1 = {"Cheese" => 20, "Flour" => 20, "Brine" => 10, "Cucumbers" => 30}
+    assert_equal expected1, pantry.print_shopping_list
+  end
 end
