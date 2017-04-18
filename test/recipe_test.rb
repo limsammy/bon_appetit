@@ -27,6 +27,7 @@ class RecipeTest < Minitest::Test
     r2 = Recipe.new("Chesey Pizza")
     r2.add_ingredient("Cheese", 20)
     r2.add_ingredient("Flour", 20)
-    assert_equal ["Cheese", "Flour"], r2.ingredient_types
+    expected = {"Cheese" => 20, "Flour" => 20}
+    assert_equal expected, r2.ingredients
   end
 end
