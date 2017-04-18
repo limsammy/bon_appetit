@@ -1,17 +1,32 @@
 class Pantry
-  attr_reader :cookbook, :ingredients
+  attr_reader :cookbook, :stock
 
   def initialize
     @cookbook = []
-    @ingredients = []
+    @stock = {}
   end
 
   def add_to_cookbook(recipe)
     cookbook << recipe
   end
 
-  def restock(ingredient, unit)
-    stock = [ingredient.to_s, unit]
-    ingredients << stock
+  def stock_check(ingredient)
+    if stock.key?(ingredient)
+      return stock[ingredient]
+    else
+      return 0
+    end
+  end
+
+  def restock(ingredient, amount)
+    @stock[ingredient] = amount
+  end
+
+  def what_can_i_make
+    @cookbook.map do |recipe|
+      if @stock.key.include?(recipe.ingredient_types)
+
+      end
+    end
   end
 end
