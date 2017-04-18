@@ -49,6 +49,6 @@ class PantryTest < Minitest::Test
     pantry.restock("Pickles", 40)
     pantry.restock("Raw nuts", 20)
     pantry.restock("Salt", 20)
-    assert_equal 6, pantry.stock.count
+    assert_equal 10, pantry.stock_check("Cheese")
   end
 end
